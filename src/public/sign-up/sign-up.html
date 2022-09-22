@@ -1,0 +1,6 @@
+<form name="signUpForm" novalidate>
+  <input type="text" name="name" ng-model="ctrl.name" required >{{ctrl.name}}
+  <div ng-if="signUpForm.name.$error.required && signUpForm.name.$error.$touched">
+    Errado campo obrigatorio
+  </div>
+</form>
