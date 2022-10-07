@@ -1,0 +1,75 @@
+h1, .form-comlete { text-align: center;}
+
+.formulario {
+  display: flex;
+  margin: auto;
+}
+
+form {
+  display: flow-root;
+  margin: auto;
+}
+
+input {
+  color: black;
+  width: 50vw;
+  max-width: 400px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+
+
+input.ng-touched.ng-valid {
+  border: 2px #f6b329 solid;
+}
+
+input.ng-touched.ng-invalid {
+  border: 2px red solid;
+}
+
+.field {
+  margin: 10px 0;
+}
+
+.field > div {
+  display: table-caption;
+}
+
+.field span {
+  font-size: 12px;
+  color: #ff7676;
+}
+
+.field span.info {
+  font-size: 12px;
+  color: #f6b319;
+}
+
+button {
+  width: 100%;
+  background: #f6b319;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+button[disabled] {
+  color: #bcbcbc;
+  background-color: #ffc74640;
+}
+
+.resume {
+  display: table;
+  margin: auto;
+}
+
+.resume span {
+  display: flex;
+}
+.resume span p:first-child {
+  margin: 0 0 10px;
+  font-weight: 800;
+  margin-right: 15px;
+}

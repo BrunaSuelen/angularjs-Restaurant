@@ -1,6 +1,107 @@
-<form name="signUpForm" novalidate>
-  <input type="text" name="name" ng-model="ctrl.name" required >{{ctrl.name}}
-  <div ng-if="signUpForm.name.$error.required && signUpForm.name.$error.$touched">
-    Errado campo obrigatorio
+<link rel="stylesheet" href="css/sign-up.css">
+
+<h1>Cadastro</h1>
+<div class="formulario" ng-if="!ctrl.completed">
+  <form name="form" novalidate>
+    <div class="field">
+      <div>
+        <label>Nome *</label>
+        <input type="text" name="name" ng-model="ctrl.name" minlength="2" required >
+      </div>
+      <span ng-if="form.name.$error.required && form.name.$touched">
+        Campo obrigatorio
+      </span>
+    </div>
+  
+    <div class="field">
+      <div>
+        <label>Sobrenome *</label>
+        <input type="text" name="sobrenome" ng-model="ctrl.sobrenome" minlength="2" required>
+      </div>
+      <span ng-if="form.sobrenome.$error.required && form.sobrenome.$touched">
+        Campo obrigatorio
+      </span>
+    </div>
+  
+    <div class="field">
+      <div>
+        <label>Endereço *</label>
+        <input type="text" name="endereco" ng-model="ctrl.endereco" minlength="2" required>
+      </div>
+      <span ng-if="form.endereco.$error.required && form.endereco.$touched">
+        Campo obrigatorio
+      </span>
+    </div>
+  
+    <div class="field">
+      <div>
+        <label>E-mail *</label>
+        <input type="email" name="email" ng-model="ctrl.email" required>
+      </div>
+      <span ng-if="form.email.$error.required && form.email.$touched">
+        Campo obrigatorio
+      </span>
+    </div>
+  
+    <div class="field">
+      <div>
+        <label>Telefone *</label>
+        <input type="tel" name="tel" ng-model="ctrl.telefone" pattern="(^[0123456789]\d{9}$)" required>
+      </div>
+      <span ng-if="form.tel.$error.invalid && form.tel.$touched">
+        Campo obrigatorio. Informe 9 dígitos
+      </span>
+    </div>
+  
+    <div class="field">
+      <div>
+        <label>Item escolhido *</label>
+        <input type="text" name="itemMenu" ng-model="ctrl.itemMenu" ng-blur="ctrl.validateItemMenu()" required>
+      </div>
+      <span class="info" ng-if="ctrl.itemMenuData">
+        Seu prato favorito é {{ctrl.itemMenuData.name}}
+      </span>
+
+      <span class="info" ng-if="ctrl.itemMenuInvalid">
+        No such menu number exists
+      </span>
+
+      <span ng-if="form.itemMenu.$error.required && form.itemMenu.$touched">
+        Campo obrigatorio.
+      </span>
+    </div>  
+    
+    <button 
+      ng-disabled="form.$invalid && !ctrl.itemMenuData"
+      ng-click="ctrl.save()"
+      >Save
+    </button>
+  </form>
+</div>
+
+<ng-container ng-if="ctrl.completed">
+  <p class="form-comlete">Your information has been saved</p>
+  <div class="resume">
+    <span>
+      <p>Nome </p>
+      <p>{{ ctrl.name}} </p>
+    </span>
+    <span>
+      <p>Sobrenome </p>
+      <p>{{ ctrl.sobrenome}} </p>
+    </span>
+    <span>
+      <p>Email</p>
+      <p>{{ ctrl.email}} </p>
+    </span>
+    <span>
+      <p>Telefone </p>
+      <p>{{ ctrl.telefone}} </p>
+    </span>
+    <span>
+      <p>Iem Menu </p>
+      <p>{{ ctrl.itemMenuData.short_name}} : {{ ctrl.itemMenuData.name}} </p>
+    </span>
   </div>
-</form>
+</ng-container>
+

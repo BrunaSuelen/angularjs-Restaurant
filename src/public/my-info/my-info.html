@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="css/sign-up.css">
+
+<div class="resume" ng-if="ctrl.user">
+  <span>
+    <p>Nome </p>
+    <p>{{ ctrl.user.name}} </p>
+  </span>
+  <span>
+    <p>Sobrenome </p>
+    <p>{{ ctrl.user.sobrenome}} </p>
+  </span>
+  <span>
+    <p>Email</p>
+    <p>{{ ctrl.user.email}} </p>
+  </span>
+  <span>
+    <p>Telefone </p>
+    <p>{{ ctrl.user.telefone}} </p>
+  </span>
+  <span>
+    <p>Item Menu </p>
+    <p>{{ ctrl.user.item.name}}</p>
+    <img src="https://nameless-mountain-47558.herokuapp.com/images/{{ctrl.user.item.short_name}}">
+    <p>{{ ctrl.user.item.description}} </p>
+  </span>
+</div>
+
+<h1 ng-if="!ctrl.user">Not Signed Up Yet. <a ui-sref="public.signUp">Sign up</a> Now!</h1>
